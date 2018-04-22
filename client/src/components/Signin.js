@@ -3,21 +3,18 @@ import axios from 'axios';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class Signin extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             username : '',
             password : '',
-        };
-    }
+    };
     submitHandler = e => {
         e.preventDefault();
         axios
-            .post('http://loalhost:5000/api/login', this.state)
+            .post('http://localhost:5000/api/login', this.state)
             .then(response => {
                 console.log('response', response.data);
                 localStorage.setItem('authToken', response.data.token);
-                this.props.onSignin(response.data);
+                //this.props.onSignin(response.data);
                 this.props.history.push('/jokes');
             })
             .catch( error => {
@@ -30,8 +27,8 @@ class Signin extends Component {
         }
     render() {
         return (
-            <Form>
-                <FormGroup onSubmit= { this.submitHandler.bind(this) }>
+            <Form onSubmit= { this.submitHandler.bind(this) }>
+                <FormGroup>
                 <Label for="username">User Name</Label>
                 <Input required type="text" name="username" value={this.state.username} onChange={ this.inputHandler } placeholder="Enter your user name" />
                 </FormGroup>

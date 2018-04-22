@@ -13,7 +13,7 @@ const routes = [
   {
     path: "/",
     exact: true,
-    main: () => <Signin onSignin={this.signInSuccess}/>,
+    main: (props) => <Signin {...props} onSignin={this.signInSuccess}/>,
   },
   {
     path: "/jokes",
@@ -50,9 +50,6 @@ class App extends Component {
                 ))}
               </Col>
           </Row>
-          {/* <Route path='/' component={Landing}/> */}
-          {/* <Route path='/signin' render={props => <Signin onSignin={this.signInSuccess} />}/>
-          <Route path='/jokes' component={DadJokes}/> */}
         </Container>
       </Router>
       

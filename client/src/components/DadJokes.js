@@ -7,7 +7,7 @@ class DadJokes extends Component {
       jokes: [],
   };
   componentDidMount() {
-      const token = localStorage.getItem('authtoken');
+      const token = localStorage.getItem('authToken');
   
       const requestOptions = {
         headers: {
