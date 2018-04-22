@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import logo from './logo.svg';
+import Landing from './components/Landing.js';
 import DadJokes from './components/DadJokes.js';
-//import Landing from './components/landing.js';
+import Signup from './components/Signup.js';
 import Signin from './components/Signin.js';
 import {Container, Row, Col} from 'reactstrap';
 import PropTypes from 'prop-types';
@@ -13,6 +14,14 @@ const routes = [
   {
     path: "/",
     exact: true,
+    main: (props) => <Landing {...props}/>,
+  },
+  {
+    path: "/signup",
+    main: (props) => <Container><Signup {...props}/></Container>,
+  },
+  {
+    path: "/signin",
     main: (props) => <Signin {...props} onSignin={this.signInSuccess}/>,
   },
   {
@@ -32,11 +41,6 @@ class App extends Component {
           <Row className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
-          <div>
-            { this.state.user && (
-              <h1>Welcome { this.state.user.username } </h1>
-            )}
-          </div>
           </Row>
           <Row>
           <Col sm={12}>
